@@ -9,7 +9,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" className={bebasNeue.className}>
       <head />
-      <body className="p-10">
+      <body className="p-10 w-full">
         <Header />
         {children}
       </body>

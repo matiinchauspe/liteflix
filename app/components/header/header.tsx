@@ -3,6 +3,8 @@
 import Image from "next/image";
 
 import { Button } from "@components/index";
+import { Menu } from "./menu";
+
 import { useStyle } from "./header.style";
 
 const Header = () => {
@@ -11,7 +13,7 @@ const Header = () => {
   const handleClick = () => {};
 
   return (
-    <header className="bg-gray-500 flex justify-between bg-transparent items-center py-2">
+    <header className="flex bg-transparent justify-between items-center py-2">
       {/* Logo and button content - desktop */}
       <div className="flex gap-40 items-center">
         {/* Logo */}
@@ -29,7 +31,7 @@ const Header = () => {
         </div>
       </div>
       {/* Menu */}
-      <div>Menu</div>
+      <Menu />
     </header>
   );
 };
