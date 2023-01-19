@@ -1,18 +1,20 @@
-import './globals.css'
+import { Bebas_Neue } from "@next/font/google";
+import "./globals.css";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+import { Header } from "@components/index";
+
+const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
+
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang="en" className={bebasNeue.className}>
       <head />
-      <body>{children}</body>
+      <body className="p-10">
+        <Header />
+        {children}
+      </body>
     </html>
-  )
-}
+  );
+};
+
+export default RootLayout;
