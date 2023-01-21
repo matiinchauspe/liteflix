@@ -3,14 +3,14 @@ import { motion, Variants } from "framer-motion";
 const menuItemVariants: Variants = {
   open: {
     y: 0,
-    opacity: 1,
+    visibility: "visible",
     transition: {
       duration: 0.4,
     },
   },
   closed: {
     y: 50,
-    opacity: 0,
+    visibility: "hidden",
     transition: {
       duration: 0.4,
     },

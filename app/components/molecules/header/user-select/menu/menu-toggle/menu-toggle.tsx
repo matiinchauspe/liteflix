@@ -5,7 +5,7 @@ const Path = (props: any) => (
   <motion.path
     fill="transparent"
     strokeWidth="3"
-    stroke="#242424"
+    stroke="#fff"
     strokeLinecap="round"
     {...props}
   />
@@ -26,8 +26,8 @@ const MenuToggle = ({ toggle }: any) => (
       <Path
         d="M 2 9.423 L 20 9.423"
         variants={{
-          closed: { opacity: 1 },
-          open: { opacity: 0 },
+          closed: { opacity: 1, x: 0 },
+          open: { opacity: 0, x: -10 },
         }}
         transition={{ duration: 0.1 }}
       />

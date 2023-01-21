@@ -25,7 +25,10 @@
       "@components/*": ["app/components/*"],
       "@internal-types/*": ["app/types/*"],
       "@constants/*": ["app/constants/*"],
-      "@services/*": ["app/services/*"]
+      "@services/*": ["app/services/*"],
+      "@lang/*": ["app/lang/*"],
+      "@hooks/*": ["app/hooks/*"],
+      "@state/*": ["app/state/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

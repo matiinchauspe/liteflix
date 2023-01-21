@@ -1,8 +1,13 @@
-import { POPULAR_MOVIES_URL, FEATURED_MOVIES_URL } from "@constants/url";
+import {
+  POPULAR_MOVIES_URL,
+  FEATURED_MOVIES_URL,
+  IMAGE_BASE_URL,
+} from "@constants/url";
 import {
   FeaturedMoviesTransformResponse,
   PopularMoviesTransformResponse,
 } from "./movies.adapter";
+import { MovieImageReqProps } from "./movies.types";
 
 export const getPopularMovies = async () => {
   try {
@@ -11,7 +16,7 @@ export const getPopularMovies = async () => {
 
     return result;
   } catch (error) {
-    throw error;
+    throw new Error(error as string);
   }
 };
 
@@ -22,6 +27,19 @@ export const getFeaturedMovies = async () => {
 
     return result;
   } catch (error) {
-    throw error;
+    throw new Error(error as string);
   }
 };
+
+// export const getMovieImage = async ({ image, size }: MovieImageReqProps) => {
+//   try {
+//     const res = await fetch(
+//       `${IMAGE_BASE_URL}${Boolean(size) ? `/${size}` : "/original"}/${image}}`
+//     );
+//     const result = await res.blob();
+
+//     return result;
+//   } catch (error) {
+//     throw new Error(error as string);
+//   }
+// };

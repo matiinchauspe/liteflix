@@ -4,11 +4,17 @@ import {
   Movie,
   FeaturedTransformedResults,
   PopularTransformedResults,
+  MovieTransformed,
 } from "@internal-types/movie";
 
-// TODO: add transform type for movie result later
-const MovieTransform = (movie: Movie): Movie => ({
-  ...movie,
+const MovieTransform = (movie: Movie): MovieTransformed => ({
+  id: movie.id.toString(),
+  image: movie.poster_path,
+  title: movie.original_title,
+  description: movie.overview,
+  date: movie.release_date,
+  popularity: movie.popularity,
+  vote_average: movie.vote_average,
 });
 
 export const FeaturedMoviesTransformResponse = (
