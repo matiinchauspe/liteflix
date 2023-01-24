@@ -1,1 +1,1 @@
-export * from "./useBuildImageUrl";
+export * from "./useMediaQuery";

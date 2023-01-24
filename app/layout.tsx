@@ -1,20 +1,40 @@
-import { Bebas_Neue } from "@next/font/google";
+import localFont from "@next/font/local";
+
 import "./globals.css";
+import "simplebar-react/dist/simplebar.min.css";
 
 import { Header } from "@components/molecules";
 
-const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
+const bebasNeue = localFont({
+  src: [
+    {
+      path: "./fonts/Bebas-Neue/BebasNeueRegular.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Bebas-Neue/BebasNeueBold.woff",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Bebas-Neue/BebasNeueLight.woff",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+  variable: "--font-bebas-neue",
+  fallback: ["sans-serif"],
+});
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <html lang="en" className={bebasNeue.className}>
-      <head />
-      <body className="flex flex-col p-10 w-full h-[100vh]">
-        <Header />
-        <main className="flex flex-1">{children}</main>
-      </body>
-    </html>
-  );
-};
+const RootLayout = ({ children }: { children: React.ReactNode }) => (
+  <html lang="en" className={`${bebasNeue.variable}`}>
+    <head />
+    <body className="flex flex-col pt-5 sm:px-10 px-32 w-full h-[100vh] overflow-hidden">
+      <Header />
+      <main className="flex flex-1">{children}</main>
+    </body>
+  </html>
+);
 
 export default RootLayout;

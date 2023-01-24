@@ -28,7 +28,9 @@
       "@services/*": ["app/services/*"],
       "@lang/*": ["app/lang/*"],
       "@hooks/*": ["app/hooks/*"],
-      "@state/*": ["app/state/*"]
+      "@state/*": ["app/state/*"],
+      "@utils/*": ["app/utils/*"],
+      "@animations/*": ["app/animations/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -23,6 +23,7 @@ export interface MovieTransformed {
   date: string;
   popularity: number;
   vote_average: number;
+  image_url: string;
 }
 
 interface Dates {

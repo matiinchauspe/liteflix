@@ -7,6 +7,8 @@ import {
   MovieTransformed,
 } from "@internal-types/movie";
 
+import { IMAGE_BASE_URL } from "@constants/url";
+
 const MovieTransform = (movie: Movie): MovieTransformed => ({
   id: movie.id.toString(),
   image: movie.poster_path,
@@ -15,6 +17,7 @@ const MovieTransform = (movie: Movie): MovieTransformed => ({
   date: movie.release_date,
   popularity: movie.popularity,
   vote_average: movie.vote_average,
+  image_url: `${IMAGE_BASE_URL}/original${movie.poster_path}`,
 });
 
 export const FeaturedMoviesTransformResponse = (

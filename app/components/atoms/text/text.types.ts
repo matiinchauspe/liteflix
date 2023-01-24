@@ -1,10 +1,10 @@
-type Variants = "h1" | "h2" | "h3" | "body1" | "body2";
-type Weights = "light" | "regular" | "bold";
+import { TextVariants, Weights } from "@internal-types/text";
 
 export interface TextProps {
-  variant?: Variants;
+  variant?: TextVariants;
   inline?: boolean;
   weight?: Weights;
   color?: string;
+  className?: string;
   children: React.ReactNode;
 }
