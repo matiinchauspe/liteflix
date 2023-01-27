@@ -1,12 +1,12 @@
 "use client";
 // External dependencies
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-// import { twMerge } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 // Internal dependencies
-import { translateYDownToUp } from "@animations/index";
-import { useMediaQuery } from "@hooks/index";
-
-import { WrappedAnimate } from "@components/molecules";
+import { useMovieStore } from "@state/store";
+import { fadeIn } from "@animations/index";
+import { useMediaQuery, useDelayedAnimateCycle } from "@hooks/index";
 
 interface BackgroundImageProps {
   imageUrl: string;
@@ -14,41 +14,56 @@ interface BackgroundImageProps {
 }
 
 const BackgroundImage = ({ imageUrl, title }: BackgroundImageProps) => {
-  const { isLarge, isMedium, isSmall } = useMediaQuery();
+  const { movieSelected } = useMovieStore();
+  const { visible } = useDelayedAnimateCycle(movieSelected);
+  const { isLarge, isLargest } = useMediaQuery();
 
-  console.log({ isLarge, isMedium, isSmall });
-  // const mediaQueryStyle = () => {
-  //   if (isLarge) {
-  //     // return "object-center";
-  //     return "center";
-  //   }
-  //   // return "object-top";
-  //   return "top";
-  // };
+  const url = movieSelected?.image_url ?? imageUrl;
+  const alt = movieSelected?.title ?? title;
+
+  const mediaQueryStyle = () => {
+    if (isLarge || isLargest) {
+      return "object-[20%, 50%]";
+    }
+    return "object-top";
+  };
 
   return (
-    <div className="fixed top-0 left-0 -z-10">
-      <WrappedAnimate
-        animation={translateYDownToUp}
-        initial="hidden"
-        animate="visible"
-      >
-        <Image
-          src={imageUrl}
-          alt={title}
-          height={1080}
-          width={isSmall ? 1000 : 1920}
-          style={{
-            objectFit: "cover",
-            aspectRatio: "1/1",
-            // objectPosition: mediaQueryStyle(),
-          }}
-          // hardcoded
-          // className={twMerge(
-          //   `object-cover object-center aspect-[1/1] ${mediaQueryStyle()}`
-          // )}
-        />
-      </WrappedAnimate>
+    <div className="absolute top-0 left-0 -z-10 flex flex-col">
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            variants={{
+              initial: {
+                opacity: 0,
+                transition: {
+                  duration: 0.2,
+                },
+              },
+              animate: {
+                opacity: 1,
+                transition: {
+                  duration: 0.7,
+                },
+              },
+            }}
+            initial="initial"
+            animate="animate"
+            exit="initial"
+          >
+            <Image
+              src={url}
+              alt={alt}
+              height={1080}
+              width={1920}
+              // hardcoded
+              className={twMerge(
+                `object-cover aspect-[1/1] ${mediaQueryStyle()}`
+              )}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

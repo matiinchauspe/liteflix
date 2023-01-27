@@ -1,11 +1,11 @@
-"use client";
 // External dependencies
 import { motion, useCycle, Variants } from "framer-motion";
 // Internal dependencies
 import { Date } from "@utils/index";
-import { MovieItemProps } from "./movie-item.types";
 import { useMediaQuery } from "@hooks/index";
 import { fadeIn } from "@animations/index";
+import { useMovieStore } from "@state/store";
+import { MovieItemProps } from "./movie-item.types";
 
 import { PlayRoundedIcon, StarIcon } from "@components/atoms/icons";
 import { Text, Button } from "@components/atoms";
@@ -13,12 +13,8 @@ import { AnimatedText } from "@components/molecules";
 
 const MovieItem = ({ movie }: MovieItemProps) => {
   const [isOver, setOver] = useCycle(false, true);
+  const { setMovieSelected } = useMovieStore();
   const { isLargest, isLarge, isMedium, isSmall } = useMediaQuery();
-
-  const handleOver = (value: any) => () => {
-    setOver(value);
-  };
-
   // Responsible resolutions
   const textSizes = () => {
     if (isLarge || isMedium) return "body2";
@@ -26,6 +22,12 @@ const MovieItem = ({ movie }: MovieItemProps) => {
     // return h3
     if (isSmall) return "body1";
   };
+
+  const handleOver = (value: any) => () => {
+    setOver(value);
+  };
+
+  const handlePlay = () => setMovieSelected(movie);
 
   return (
     <motion.div
@@ -69,7 +71,7 @@ const MovieItem = ({ movie }: MovieItemProps) => {
         animate={isOver ? "visible" : "hidden"}
       >
         <div className={`flex items-center gap-4`}>
-          <Button variant="text" onClick={() => {}}>
+          <Button variant="text" onClick={handlePlay}>
             <PlayRoundedIcon svgClassName="-mt-[5px] hover:fill-aquaGreen transition-all duration-500" />
           </Button>
           <Text variant={textSizes()} color="text-white" className="z-10">

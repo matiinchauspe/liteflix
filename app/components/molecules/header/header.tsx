@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 // Internal dependencies
 import { Transcript } from "@lang/es";
-import { OPTIONS_KEY_MAP } from "@constants/menu";
-import { scaleVariants } from "./animations";
+import { Menu as MenuUtils } from "@utils/index";
+import { scaleMinToPlus } from "@animations/index";
 
 import { Text } from "@components/atoms";
 import { PlusIcon } from "@components/atoms/icons";
@@ -13,34 +13,38 @@ import { UserSelect } from "./user-select";
 import { Menu } from "./menu";
 
 const Header = () => (
-  <header className="flex justify-between items-center">
+  <header className="flex flex-1 justify-between items-center px-10 md:px-0">
     {/* Logo and button content - desktop */}
     <WrappedAnimate
-      animation={scaleVariants}
+      animation={scaleMinToPlus}
       initial="initial"
       animate="animate"
-      className="flex gap-10 xs:justify-between lg:gap-20 items-center"
+      className="flex flex-1 md:flex-initial gap-0 md:gap-10 justify-between lg:gap-20 items-center"
     >
       <div className="flex md:hidden">
         <Menu />
       </div>
       {/* Logo */}
-      <Image
-        src="/images/liteflix-logo.svg"
-        alt="logo"
-        // hardcoded values
-        width={113}
-        height={34}
-        priority
-      />
+      <div className="flex flex-1 justify-center md:justify-start">
+        <Image
+          src="/images/liteflix-logo.svg"
+          alt="logo"
+          // hardcoded values
+          width={113}
+          height={34}
+          priority
+        />
+      </div>
       <Link
         href="/add-movie"
-        className={`hidden md:flex gap-2 items-center text-gray-300 hover:scale-110 transition-all p-0 tracking-[4px] font-light mt-[5px] z-0`}
+        className={`hidden md:flex gap-2 items-center text-white hover:scale-110 transition-all p-0 tracking-[4px] font-bold mt-[5px] z-0`}
       >
-        <PlusIcon svgClassName="-mt-[3px]" />
-        <Text variant="body1" color="text-white">
-          {Transcript.es.home.menu.options[OPTIONS_KEY_MAP.ADD_MOVIE.name]}
-        </Text>
+        <PlusIcon svgClassName="-mt-[3px] stroke-2" />
+        {
+          Transcript.es.home.menu.options[
+            MenuUtils.OPTIONS_KEY_MAP.ADD_MOVIE.name
+          ]
+        }
       </Link>
     </WrappedAnimate>
 
@@ -48,7 +52,7 @@ const Header = () => (
     <WrappedAnimate
       initial="initial"
       animate="animate"
-      animation={scaleVariants}
+      animation={scaleMinToPlus}
       className="flex gap-10 items-center"
     >
       <div className="hidden md:flex">

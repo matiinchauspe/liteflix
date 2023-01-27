@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 // Internal dependencies
 import { AnimatedCharactersProps } from "./animated-text.types";
-import { containerVariants, itemVariants } from "./animations";
+import { containerVariants, itemVariants } from "./animated-text.animations";
 
 import { Text } from "@components/atoms";
 

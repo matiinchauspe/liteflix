@@ -1,4 +1,4 @@
-import { OPTIONS_KEY_MAP } from "@constants/menu";
+import { OPTIONS_KEY_MAP } from "@utils/menu";
 
 export const Transcript = {
   es: {
@@ -22,6 +22,9 @@ export const Transcript = {
           play: "Reproducir",
           myList: "Mi lista",
         },
+      },
+      movies: {
+        label: "Ver:",
       },
     },
     global: {
