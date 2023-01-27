@@ -15,8 +15,16 @@ export interface Movie {
   vote_count: number;
 }
 
-// TODO: modify this later
-export interface MovieTransformed {}
+export interface MovieTransformed {
+  id: string;
+  image: string;
+  title: string;
+  description: string;
+  date: string;
+  popularity: number;
+  vote_average: number;
+  image_url: string;
+}
 
 interface Dates {
   maximum: string;
@@ -38,11 +46,10 @@ export interface PopularResponse {
   total_results: number;
 }
 
-// TODO: modify this later - maybe use MovieTransformed later
 export interface FeaturedTransformedResults {
-  data: Movie[];
+  data: MovieTransformed[];
 }
 
 export interface PopularTransformedResults {
-  data: Movie[];
+  data: MovieTransformed[];
 }

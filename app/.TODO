@@ -1,0 +1,6 @@
+TO CONSIDER: In nextjs 13 the idea of the creators is that the whole application directory is in the `/app` so in this case I decided to go that way, but I recognize that it can be very confusing
+
+//
+home: route
+add-movie: route
+//
