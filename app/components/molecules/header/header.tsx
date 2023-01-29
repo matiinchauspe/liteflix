@@ -13,7 +13,7 @@ import { UserSelect } from "./user-select";
 import { Menu } from "./menu";
 
 const Header = () => (
-  <header className="flex flex-1 justify-between items-center px-10 md:px-0">
+  <header className="flex justify-between items-center px-10 md:px-0">
     {/* Logo and button content - desktop */}
     <WrappedAnimate
       animation={scaleMinToPlus}

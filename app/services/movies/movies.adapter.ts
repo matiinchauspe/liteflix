@@ -7,7 +7,7 @@ import {
   MovieTransformed,
 } from "@internal-types/movie";
 
-import { IMAGE_BASE_URL } from "@/app/constants/url.constants";
+import { IMAGE_BASE_URL } from "@/app/constants/url";
 
 const MovieTransform = (movie: Movie): MovieTransformed => ({
   id: movie.id.toString(),

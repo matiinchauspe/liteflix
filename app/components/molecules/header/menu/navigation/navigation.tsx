@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
 // Internal Dependencies
 import { OPTIONS_KEY_MAP } from "@utils/menu";
-import { PATH_NAMES } from "@constants/routes.constants";
+import { PATH_NAMES } from "@/app/constants/route-path";
 import { Transcript } from "@lang/es";
 import { staggerAndVisibility } from "../menu.animations";
 

@@ -8,6 +8,7 @@ const Button = ({
   variant = "text",
   onClick,
   className,
+  disabled,
   children,
 }: ButtonProps) => {
   const classes = twMerge(`
@@ -21,6 +22,7 @@ const Button = ({
         variant === "filled",
       "border-white border bg-grayBlack opacity-50 hover:opacity-70 transition-opacity text-white":
         variant === "outlined",
+      "opacity-60 cursor-default pointer-events-none": disabled,
     })}
     ${className}
   `);

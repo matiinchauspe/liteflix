@@ -27,9 +27,26 @@ export const Transcript = {
         label: "Ver:",
       },
     },
+    addMovie: {
+      form: {
+        dropzone: {
+          title: "Agrega un archivo o arrastralo y soltalo aqui",
+        },
+        inputPlaceholder: "Título",
+        error: "Error, no se pudo cargar la película",
+        loadingText: "Cargado",
+        successText: "Listo!",
+        retryText: "Reintentar",
+        actions: {
+          submit: "Subir película",
+          change: "Cambiar",
+        },
+      },
+    },
     global: {
       addMovie: "Agregar película",
       liteflix: "Liteflix",
+      goHome: "Ir al home",
     },
   },
 };

@@ -14,7 +14,7 @@ const HomePage = async () => {
   const fourFirstFeaturedMovies = featuredMovies.data.slice(5, 9);
 
   return (
-    <div className={`flex flex-1 md:flex-row justify-between flex-col pt-10`}>
+    <div className={`flex flex-1 flex-col md:flex-row justify-between pt-10`}>
       {/* Background image of movie selected */}
       <BackgroundImage imageUrl={firstOne.image_url} title={firstOne.title} />
       {/* Title and reproduce section */}

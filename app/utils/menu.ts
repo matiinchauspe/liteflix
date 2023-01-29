@@ -1,4 +1,4 @@
-import { PATH_NAMES } from "@constants/routes.constants";
+import { PATH_NAMES } from "@/app/constants/route-path";
 
 interface Keys {
   [key: string]: {
@@ -51,7 +51,7 @@ export const OPTIONS_KEY_MAP: Keys = {
   },
   CLOSE_SESSION: {
     name: "close_session",
-    path: "/close_session",
+    path: PATH_NAMES.CLOSE_SESSION,
     disabled: true,
   },
 };
