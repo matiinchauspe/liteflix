@@ -1,4 +1,4 @@
-import { OPTIONS_KEY_MAP } from "@constants/menu";
+import { OPTIONS_KEY_MAP } from "@utils/menu";
 
 export const Transcript = {
   es: {
@@ -23,10 +23,30 @@ export const Transcript = {
           myList: "Mi lista",
         },
       },
+      movies: {
+        label: "Ver:",
+      },
+    },
+    addMovie: {
+      form: {
+        dropzone: {
+          title: "Agrega un archivo o arrastralo y soltalo aqui",
+        },
+        inputPlaceholder: "Título",
+        error: "Error, no se pudo cargar la película",
+        loadingText: "Cargado",
+        successText: "Listo!",
+        retryText: "Reintentar",
+        actions: {
+          submit: "Subir película",
+          change: "Cambiar",
+        },
+      },
     },
     global: {
       addMovie: "Agregar película",
       liteflix: "Liteflix",
+      goHome: "Ir al home",
     },
   },
 };

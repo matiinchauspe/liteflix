@@ -1,18 +1,21 @@
-import {
-  POPULAR_MOVIES_URL,
-  FEATURED_MOVIES_URL,
-  IMAGE_BASE_URL,
-} from "@constants/url";
+// Internal Dependencies
+import { UrlConstants } from "@constants/index";
+import { getRequest, postRequest } from "@api/index";
 import {
   FeaturedMoviesTransformResponse,
   PopularMoviesTransformResponse,
 } from "./movies.adapter";
-import { MovieImageReqProps } from "./movies.types";
+// FIXME: TEMPORAL
+import { PostMock } from "./mock";
 
 export const getPopularMovies = async () => {
   try {
-    const res = await fetch(POPULAR_MOVIES_URL);
-    const result = PopularMoviesTransformResponse(await res.json());
+    const { data: response } = await getRequest({
+      url: UrlConstants.POPULAR_MOVIES_URL,
+    });
+
+    debugger;
+    const result = PopularMoviesTransformResponse(response);
 
     return result;
   } catch (error) {
@@ -22,8 +25,11 @@ export const getPopularMovies = async () => {
 
 export const getFeaturedMovies = async () => {
   try {
-    const res = await fetch(FEATURED_MOVIES_URL);
-    const result = FeaturedMoviesTransformResponse(await res.json());
+    const { data: response } = await getRequest({
+      url: UrlConstants.FEATURED_MOVIES_URL,
+    });
+    debugger;
+    const result = FeaturedMoviesTransformResponse(response);
 
     return result;
   } catch (error) {
@@ -31,15 +37,17 @@ export const getFeaturedMovies = async () => {
   }
 };
 
-// export const getMovieImage = async ({ image, size }: MovieImageReqProps) => {
-//   try {
-//     const res = await fetch(
-//       `${IMAGE_BASE_URL}${Boolean(size) ? `/${size}` : "/original"}/${image}}`
-//     );
-//     const result = await res.blob();
+export const uploadMovie = async (data: FormData) => {
+  try {
+    // FIXME: TEMPORAL - ADD MY API endpoint here
+    // const { data: response } = await postRequest({
+    //   url: UrlConstants.UPLOAD_MOVIE_URL,
+    //   data,
+    // });
+    const response = Promise.resolve(PostMock);
 
-//     return result;
-//   } catch (error) {
-//     throw new Error(error as string);
-//   }
-// };
+    return response;
+  } catch (error) {
+    throw new Error(error as string);
+  }
+};

@@ -15,7 +15,7 @@ const BellIcon = ({ svgClassName }: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <g clipPath="url(#clip0_1_392)">
+      <g clipPath="url(#clip0_1_391)">
         <path
           d="M20.8 8.66661C20.8 6.69643 19.9783 4.80694 18.5155 3.41382C17.0527 2.02069 15.0687 1.23804 13 1.23804C10.9314 1.23804 8.9474 2.02069 7.48462 3.41382C6.02183 4.80694 5.20005 6.69643 5.20005 8.66661C5.20005 17.3333 1.30005 19.8095 1.30005 19.8095H24.7C24.7 19.8095 20.8 17.3333 20.8 8.66661Z"
           strokeLinecap="round"
@@ -27,8 +27,9 @@ const BellIcon = ({ svgClassName }: IconProps) => {
           strokeLinejoin="round"
         />
       </g>
+      <circle cx="20.5" cy="5.5" r="4.5" fill="#64EEBC" />
       <defs>
-        <clipPath id="clip0_1_392">
+        <clipPath id="clip0_1_391">
           <rect width="26" height="26" fill="white" />
         </clipPath>
       </defs>

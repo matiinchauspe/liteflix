@@ -1,5 +1,6 @@
 // External dependencies
 import { create } from "zustand";
+import { mountStoreDevtool } from "simple-zustand-devtools";
 // Internal dependencies
 import { MovieTransformed } from "@internal-types/movie";
 
@@ -8,7 +9,7 @@ interface MovieState {
   setMovieSelected: (movie: MovieTransformed) => void;
 }
 
-const useMovieStore = create<MovieState>((set) => ({
+export const useMovieStore = create<MovieState>((set) => ({
   movieSelected: null,
   setMovieSelected: (movie: MovieTransformed) =>
     set(() => ({
@@ -16,4 +17,6 @@ const useMovieStore = create<MovieState>((set) => ({
     })),
 }));
 
-export default useMovieStore;
+if (process.env.NODE_ENV === "development") {
+  mountStoreDevtool("Movie Store", useMovieStore);
+}

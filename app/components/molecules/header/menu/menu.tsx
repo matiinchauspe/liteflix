@@ -1,23 +1,34 @@
 "use client";
 // External Dependencies
 import { motion, useCycle } from "framer-motion";
-// import classnames from "classnames";
-// import { useMediaQuery } from "react-responsive";
-
 // Internal Dependencies
-import { menuIconTranslate } from "./animations";
+import {
+  translateXClose,
+  fadeInOutBackground,
+  translateXBackground,
+} from "./menu.animations";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 import { Navigation } from "./navigation";
 import { MenuToggle } from "./menu-toggle";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useCycle(false, true);
+  const { isLargest, isLarge, isMedium, isSmall } = useMediaQuery();
 
   const handleToggle = () => {
     setIsOpen();
   };
 
-  // TODO: refactor this later
+  const translateMenuIcon = () => {
+    if (isLarge || isLargest) {
+      return translateXClose.largeScreen;
+    }
+    if (isMedium) return translateXClose.mediumScreen;
+
+    return translateXClose.smallScreen;
+  };
+
   return (
     <>
       {/* NOTE: background page effects */}
@@ -27,18 +38,7 @@ const Menu = () => {
           inset: 0,
           zIndex: -1,
         }}
-        variants={{
-          open: {
-            backgroundColor: "#242424",
-            opacity: 0.85,
-            zIndex: 10,
-            transition: { duration: 0.4 },
-          },
-          closed: {
-            opacity: 0,
-            transition: { duration: 0.4, delay: 0.4 },
-          },
-        }}
+        variants={fadeInOutBackground}
         animate={isOpen ? "open" : "closed"}
       />
       {/* NOTE: nav */}
@@ -49,36 +49,14 @@ const Menu = () => {
       >
         {/* nav background */}
         <motion.div
-          className={`absolute top-0 right-0 bottom-0 md:w-[760px] sm:w-[100%] bg-[#242424] z-0`}
-          variants={{
-            open: {
-              translateX: "0px",
-              background: "#242424",
-              opacity: 0.9,
-              transition: {
-                delayChildren: 0.4,
-                duration: 0.4,
-              },
-              zIndex: 10,
-            },
-            closed: {
-              translateX: "calc(100% - 760px)",
-              background: "#242424",
-              opacity: 0,
-              transition: {
-                duration: 0.4,
-                delay: 0.4,
-              },
-              zIndex: -1,
-            },
-          }}
+          className={`absolute top-0 right-0 bottom-0 w-[100%] md:w-[760px] bg-[#242424] z-0`}
+          variants={translateXBackground}
           animate={isOpen ? "open" : "closed"}
           initial="closed"
         />
         {/* nav toggle - open/close menu */}
-        {/* TODO: button with add menu-icon.tsx here */}
         <motion.div
-          variants={menuIconTranslate}
+          variants={translateMenuIcon()}
           initial="exit"
           animate={isOpen ? "initial" : "exit"}
         >

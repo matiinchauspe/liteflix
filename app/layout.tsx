@@ -30,9 +30,9 @@ const bebasNeue = localFont({
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en" className={`${bebasNeue.variable}`}>
     <head />
-    <body className="flex flex-col pt-5 sm:px-10 px-32 w-full h-[100vh] overflow-hidden">
+    <body className="flex flex-col pt-5 md:px-16 lg:px-32 w-full h-[100vh] overflow-x-hidden md:overflow-y-hidden relative bg-grayBlack">
       <Header />
-      <main className="flex flex-1">{children}</main>
+      <main className="flex flex-1 flex-col">{children}</main>
     </body>
   </html>
 );
