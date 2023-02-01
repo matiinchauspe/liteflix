@@ -1,5 +1,5 @@
 import { MovieTransformed } from "@internal-types/movie";
 
-export interface MovieListProps {
+export type MovieListProps = {
   movies: MovieTransformed[];
 }

@@ -1,6 +1,6 @@
 import { TextVariants, Weights } from "@internal-types/text";
 
-export interface AnimatedCharactersProps {
+export type AnimatedCharactersProps = {
   text: string;
   variant?: TextVariants;
   weight?: Weights;

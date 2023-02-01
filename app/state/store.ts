@@ -4,7 +4,7 @@ import { mountStoreDevtool } from "simple-zustand-devtools";
 // Internal dependencies
 import { MovieTransformed } from "@internal-types/movie";
 
-interface MovieState {
+type MovieState = {
   movieSelected: MovieTransformed | null;
   setMovieSelected: (movie: MovieTransformed) => void;
 }

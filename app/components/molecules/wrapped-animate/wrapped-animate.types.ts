@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 
-export interface WrappedAnimateProps {
+export type WrappedAnimateProps = {
   animation?: Variants;
   initial?: string;
   animate?: string;

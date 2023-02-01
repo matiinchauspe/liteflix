@@ -8,7 +8,7 @@ import { useMovieStore } from "@state/store";
 import { fadeIn } from "@animations/index";
 import { useMediaQuery, useDelayedAnimateCycle } from "@hooks/index";
 
-interface BackgroundImageProps {
+type BackgroundImageProps = {
   imageUrl: string;
   title: string;
 }

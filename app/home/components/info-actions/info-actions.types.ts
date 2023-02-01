@@ -1,3 +1,3 @@
-export interface InfoActionsProps {
+export type InfoActionsProps = {
   movieTitle: string;
 }

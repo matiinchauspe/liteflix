@@ -9,7 +9,7 @@ import { MovieTransformed, ListMovieTypes } from "@internal-types/index";
 import { Dropdown } from "@components/molecules/index";
 import { MovieList } from "./movie-list";
 
-interface MoveExploreProps {
+type MoveExploreProps = {
   popularMovies: MovieTransformed[];
   myMovies: MovieTransformed[];
 }

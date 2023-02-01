@@ -4,7 +4,7 @@ import { motion, animate } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import classnames from "classnames";
 
-interface ProgressBarProps {
+type ProgressBarProps = {
   value: number;
   error?: boolean;
   errorText?: string;

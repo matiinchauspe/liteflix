@@ -1,6 +1,6 @@
 import { TextVariants, Weights } from "@internal-types/text";
 
-export interface TextProps {
+export type TextProps = {
   variant?: TextVariants;
   inline?: boolean;
   weight?: Weights;

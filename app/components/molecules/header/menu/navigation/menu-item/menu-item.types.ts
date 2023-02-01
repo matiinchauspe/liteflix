@@ -1,3 +1,3 @@
-export interface MenuItemProps {
+export type MenuItemProps = {
   children: React.ReactNode;
 }

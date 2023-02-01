@@ -1,33 +1,33 @@
-"use client";
+'use client'
 // External Dependencies
-import { useState } from "react";
-import SimpleBar from "simplebar-react";
+import { useState } from 'react'
+import SimpleBar from 'simplebar-react'
 // Internal Dependencies
-import { Transcript } from "@lang/es";
+import { Transcript } from '@lang/es'
 
 // import { Feedback } from "./feedback";
-import { UploadFile } from "@components/molecules";
+import { UploadFile } from '@components/molecules'
 import {
   Text,
   Button,
   Input,
   // ProgressBar
-} from "@components/atoms";
+} from '@components/atoms'
 
 const Box = () => {
-  const [title, setTitle] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [title, setTitle] = useState('')
+  const [file, setFile] = useState<File | null>(null)
 
-  const handleUploadFile = (value: File | null) => setFile(value);
+  const handleUploadFile = (value: File | null) => setFile(value)
 
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
+    setTitle(e.target.value)
+  }
 
-  const enableAction = file && title;
+  const enableAction = (file != null) && title
 
   return (
-    <SimpleBar style={{ maxHeight: "440px" }}>
+    <SimpleBar style={{ maxHeight: '440px' }}>
       <div className="flex flex-col flex-1 gap-10 items-center p-10 w-[100%]">
         <Text color="text-aquaGreen">{Transcript.es.global.addMovie}</Text>
         {/* TODO: DESCOMENTAR LUEGO */}
@@ -64,7 +64,7 @@ const Box = () => {
         </Button>
       </div>
     </SimpleBar>
-  );
-};
+  )
+}
 
-export default Box;
+export default Box

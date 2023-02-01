@@ -15,15 +15,15 @@ const ApiInstance = axios.create({
   },
 });
 
-interface GetRequest {
+type GetRequest = {
   url: string;
   params?: undefined | null | object;
   headers?: object;
 }
 
-interface PostRequest extends GetRequest {
+type PostRequest = {
   data: object;
-}
+} & GetRequest
 
 const paramsFactory = (params: object) =>
   new URLSearchParams([...Object.entries(params)]).toString();

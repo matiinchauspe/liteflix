@@ -7,7 +7,11 @@
     "__dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint --ext .ts,.tsx ./app",
+    "lint:format": "eslint --fix --ext .ts,.tsx ./app"
+  },
+  "ts-standard": {
+    "project": "./tsconfig.json"
   },
   "dependencies": {
     "@next/font": "13.1.2",
@@ -27,10 +31,13 @@
     "zustand": "^4.3.2"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
     "autoprefixer": "^10.4.13",
     "classnames": "^2.3.2",
-    "eslint": "8.32.0",
+    "eslint": "^8.33.0",
     "eslint-config-next": "13.1.2",
+    "eslint-plugin-react": "^7.32.2",
     "postcss": "^8.4.21",
     "simple-zustand-devtools": "^1.1.0",
     "tailwind-merge": "^1.8.1",
