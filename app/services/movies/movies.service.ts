@@ -5,16 +5,12 @@ import {
   FeaturedMoviesTransformResponse,
   PopularMoviesTransformResponse,
 } from "./movies.adapter";
-// FIXME: TEMPORAL
-import { PostMock } from "./mock";
 
 export const getPopularMovies = async () => {
   try {
     const { data: response } = await getRequest({
       url: UrlConstants.POPULAR_MOVIES_URL,
     });
-
-    debugger;
     const result = PopularMoviesTransformResponse(response);
 
     return result;
@@ -28,7 +24,6 @@ export const getFeaturedMovies = async () => {
     const { data: response } = await getRequest({
       url: UrlConstants.FEATURED_MOVIES_URL,
     });
-    debugger;
     const result = FeaturedMoviesTransformResponse(response);
 
     return result;
@@ -37,17 +32,29 @@ export const getFeaturedMovies = async () => {
   }
 };
 
+// TODO: We should use a better way to handle the upload and use this
 export const uploadMovie = async (data: FormData) => {
-  try {
-    // FIXME: TEMPORAL - ADD MY API endpoint here
-    // const { data: response } = await postRequest({
-    //   url: UrlConstants.UPLOAD_MOVIE_URL,
-    //   data,
-    // });
-    const response = Promise.resolve(PostMock);
+  const image = data.get("image");
+  const title = data.get("title");
 
-    return response;
+  try {
+    const { data: response } = await postRequest({
+      url: UrlConstants.UPLOAD_MOVIE_URL,
+      headers: { "Content-Type": "multipart/form-data" },
+      data: {
+        image,
+        title,
+      },
+    });
+
+    return {
+      success: response.status === "OK",
+      error: response.status === "ERROR",
+    };
   } catch (error) {
-    throw new Error(error as string);
+    return {
+      success: false,
+      error: true,
+    };
   }
 };

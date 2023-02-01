@@ -5,6 +5,7 @@ import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 // Internal dependencies
 import { useMovieStore } from "@state/store";
+// TODO: review this later
 import { fadeIn } from "@animations/index";
 import { useMediaQuery, useDelayedAnimateCycle } from "@hooks/index";
 

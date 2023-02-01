@@ -4,7 +4,6 @@ import { motion, Variants } from "framer-motion";
 import SimpleBar from "simplebar-react";
 
 // Internal Dependencies
-import { useMediaQuery } from "@hooks/index";
 import { MovieListProps } from "./movie-list.types";
 
 import { MovieItem } from "./movie-item";

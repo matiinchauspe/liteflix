@@ -6,7 +6,6 @@ import { Transcript } from "@lang/es";
 import { Menu as MenuUtils } from "@utils/index";
 import { scaleMinToPlus } from "@animations/index";
 
-import { Text } from "@components/atoms";
 import { PlusIcon } from "@components/atoms/icons";
 import { WrappedAnimate } from "@components/molecules";
 import { UserSelect } from "./user-select";

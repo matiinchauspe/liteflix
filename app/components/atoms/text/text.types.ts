@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { TextVariants, Weights } from "@internal-types/text";
 
 export type TextProps = {
@@ -6,5 +8,5 @@ export type TextProps = {
   weight?: Weights;
   color?: string;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }

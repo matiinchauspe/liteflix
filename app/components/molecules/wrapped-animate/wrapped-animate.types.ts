@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { Variants } from "framer-motion";
 
 export type WrappedAnimateProps = {
@@ -6,5 +8,5 @@ export type WrappedAnimateProps = {
   animate?: string;
   exit?: string;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }

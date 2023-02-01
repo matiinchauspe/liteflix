@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export type MenuItemProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 }

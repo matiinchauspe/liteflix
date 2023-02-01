@@ -1,5 +1,5 @@
 // External dependencies
-import { motion, useCycle, Variants } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 // Internal dependencies
 import { Date } from "@utils/index";
 import { useMediaQuery } from "@hooks/index";
