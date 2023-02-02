@@ -1,4 +1,4 @@
-export interface Movie {
+export type Movie = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -13,9 +13,9 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
-}
+};
 
-export interface MovieTransformed {
+export type MovieTransformed = {
   id: string;
   image: string;
   title: string;
@@ -23,33 +23,62 @@ export interface MovieTransformed {
   date: string;
   popularity: number;
   vote_average: number;
-  image_url: string;
-}
+};
 
-interface Dates {
+export type MyMovie = {
+  id: string;
+  title: string;
+  image: {
+    data: {
+      type: string;
+      data: Buffer;
+    };
+    contentType: string;
+  };
+  updatedAt: string;
+};
+
+export type MyMovieTransformed = {
+  id: string;
+  title: string;
+  image: string;
+  vote_average: number;
+  date: string;
+};
+
+type Dates = {
   maximum: string;
   minimum: string;
-}
+};
 
-export interface FeaturedResponse {
+export type FeaturedResponse = {
   dates: Dates;
   page: number;
   results: Movie[];
   total_pages: number;
   total_results: number;
-}
+};
 
-export interface PopularResponse {
+export type PopularResponse = {
   page: number;
   results: Movie[];
   total_pages: number;
   total_results: number;
-}
+};
 
-export interface FeaturedTransformedResults {
-  data: MovieTransformed[];
-}
+export type MyMoviesResponse = {
+  status: number;
+  data: MyMovie[];
+};
 
-export interface PopularTransformedResults {
+export type FeaturedTransformedResults = {
   data: MovieTransformed[];
-}
+};
+
+export type PopularTransformedResults = {
+  data: MovieTransformed[];
+};
+
+export type MyMoviesTransformedResults = {
+  data: MyMovieTransformed[];
+};

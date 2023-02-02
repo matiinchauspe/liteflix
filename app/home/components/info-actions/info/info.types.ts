@@ -1,3 +1,3 @@
-export interface InfoProps {
+export type InfoProps = {
   title: string;
 }

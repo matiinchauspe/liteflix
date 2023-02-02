@@ -1,4 +1,4 @@
-export interface MovieImageReqProps {
+export type MovieImageReqProps = {
   image: string;
   size?: string;
 }

@@ -26,7 +26,7 @@ const Button = ({
     })}
     ${className}
   `);
-  // TODO: Move styles to a separate file later
+
   return (
     <button className={classes} onClick={onClick}>
       {children}

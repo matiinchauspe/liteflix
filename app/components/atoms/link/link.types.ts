@@ -1,7 +1,9 @@
-export interface LinkProps {
+import { ReactNode } from 'react'
+
+export type LinkProps = {
   href: string;
   className?: string;
   disabled?: boolean;
   onClick?: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 }

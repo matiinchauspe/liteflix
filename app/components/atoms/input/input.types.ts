@@ -1,4 +1,6 @@
-export interface InputProps {
+import React from 'react';
+
+export type InputProps = {
   placeholder?: string;
   name?: string;
   type?: string;

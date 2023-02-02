@@ -1,13 +1,13 @@
 // External Dependencies
-import axios from "axios";
+import axios, { AxiosProgressEvent } from "axios";
 // Internal Dependencies
 import { UrlConstants } from "@constants/index";
 
 const ApiInstance = axios.create({
-  baseURL: UrlConstants.BASE_URL,
+  baseURL: UrlConstants.BASE_EXTERNAL_URL,
   headers: {
     post: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "multipart/form-data",
     },
     get: {
       "Content-Type": "application/json",
@@ -15,15 +15,19 @@ const ApiInstance = axios.create({
   },
 });
 
-interface GetRequest {
+type GetRequest = {
   url: string;
   params?: undefined | null | object;
   headers?: object;
-}
+};
 
-interface PostRequest extends GetRequest {
+type PostRequest = {
   data: object;
-}
+  events?: {
+    onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
+    onDownloadProgress?: (progressEvent: AxiosProgressEvent) => void;
+  };
+} & GetRequest;
 
 const paramsFactory = (params: object) =>
   new URLSearchParams([...Object.entries(params)]).toString();
@@ -32,15 +36,16 @@ export const getRequest = ({ url, params, headers }: GetRequest) => {
   let parameters = "";
   if (params) parameters = paramsFactory(params);
 
-  return ApiInstance.get(`${url}${parameters}`, {
-    headers: {
-      // ...ApiInstance.defaults.headers.get,
-      // ...(headers && headers),
-    },
-  });
+  return ApiInstance.get(`${url}${parameters}`, { headers });
 };
 
-export const postRequest = ({ url, params, headers, data }: PostRequest) => {
+export const postRequest = ({
+  url,
+  params,
+  headers,
+  data,
+  events,
+}: PostRequest) => {
   let parameters = "";
   if (params) parameters = paramsFactory(params);
 
@@ -52,6 +57,7 @@ export const postRequest = ({ url, params, headers, data }: PostRequest) => {
         ...ApiInstance.defaults.headers.post,
         ...(headers && headers),
       },
+      ...events,
     }
   );
 };

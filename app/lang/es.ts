@@ -42,6 +42,8 @@ export const Transcript = {
           change: "Cambiar",
         },
       },
+      successNotice: 'La película fue subida correctamente',
+      errorNotice: 'Hubo un error al subir la película',
     },
     global: {
       addMovie: "Agregar película",

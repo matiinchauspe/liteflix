@@ -8,17 +8,17 @@ import { useMovieStore } from "@state/store";
 import { fadeIn } from "@animations/index";
 import { useMediaQuery, useDelayedAnimateCycle } from "@hooks/index";
 
-interface BackgroundImageProps {
-  imageUrl: string;
+type BackgroundImageProps = {
+  image: string;
   title: string;
-}
+};
 
-const BackgroundImage = ({ imageUrl, title }: BackgroundImageProps) => {
+const BackgroundImage = ({ image: imageUri, title }: BackgroundImageProps) => {
   const { movieSelected } = useMovieStore();
   const { visible } = useDelayedAnimateCycle(movieSelected);
   const { isLarge, isLargest } = useMediaQuery();
 
-  const url = movieSelected?.image_url ?? imageUrl;
+  const url = movieSelected?.image ?? imageUri;
   const alt = movieSelected?.title ?? title;
 
   const mediaQueryStyle = () => {
@@ -33,22 +33,9 @@ const BackgroundImage = ({ imageUrl, title }: BackgroundImageProps) => {
       <AnimatePresence>
         {visible && (
           <motion.div
-            variants={{
-              initial: {
-                opacity: 0,
-                transition: {
-                  duration: 0.2,
-                },
-              },
-              animate: {
-                opacity: 1,
-                transition: {
-                  duration: 0.7,
-                },
-              },
-            }}
-            initial="initial"
-            animate="animate"
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
             exit="initial"
           >
             <Image

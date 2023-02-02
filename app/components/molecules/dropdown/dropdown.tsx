@@ -31,21 +31,24 @@ const Dropdown = ({
     setShown(false);
   };
 
+  const handleOver = (value: boolean) => () => {
+    setShown(value);
+  };
+
   const containerClasses = twMerge(`relative ${className}`);
 
   return (
     <motion.div
       className={containerClasses}
-      onHoverStart={() => setShown(true)}
-      onHoverEnd={() => setShown(false)}
+      onHoverStart={handleOver(true)}
+      onHoverEnd={handleOver(false)}
     >
       <div className={`flex ${label ? "gap-2" : ""} text-white`}>
-        {/* TODO: "label" by parameter */}
         <Text className="font-light">{label}</Text>
         <motion.div
           className="cursor-pointer flex gap-2 items-center"
           // NOTE: This is for mobile
-          onClick={() => setShown(!shown)}
+          onClick={handleOver(!shown)}
         >
           <Text>{showSelectedLabel()}</Text>
           <ArrowIcon svgClassName="-mt-[5px]" />

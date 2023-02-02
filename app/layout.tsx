@@ -1,3 +1,4 @@
+import React from "react";
 import localFont from "@next/font/local";
 
 import "./globals.css";
@@ -27,7 +28,11 @@ const bebasNeue = localFont({
   fallback: ["sans-serif"],
 });
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => (
+type RootLayoutProps = {
+  children: React.ReactNode;
+};
+
+const RootLayout = ({ children }: RootLayoutProps) => (
   <html lang="en" className={`${bebasNeue.variable}`}>
     <head />
     <body className="flex flex-col pt-5 md:px-16 lg:px-32 w-full h-[100vh] overflow-x-hidden md:overflow-y-hidden relative bg-grayBlack">

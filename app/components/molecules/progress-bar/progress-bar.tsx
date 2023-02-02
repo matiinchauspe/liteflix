@@ -1,10 +1,13 @@
+'use client'
 // External Dependencies
 import { useEffect, useRef } from "react";
 import { motion, animate } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import classnames from "classnames";
+// Internal Dependencies
+import { Button } from '@components/atoms'
 
-interface ProgressBarProps {
+type ProgressBarProps = {
   value: number;
   error?: boolean;
   errorText?: string;
@@ -12,6 +15,7 @@ interface ProgressBarProps {
   successText?: string;
   retryText?: string;
   className?: string;
+  retryAction: () => void;
 }
 
 const ProgressBar = ({
@@ -22,6 +26,7 @@ const ProgressBar = ({
   loadingText = "Cargado",
   successText = "Listo!",
   className = "",
+  retryAction,
 }: ProgressBarProps) => {
   const progressNumberRef = useRef<HTMLDivElement>(null);
 
@@ -69,18 +74,20 @@ const ProgressBar = ({
         />
       </div>
       <div className="flex justify-end">
-        <span
-          className={twMerge(`
-            text-white tracking-[4px]
-            ${classnames({
-              "text-aquaGreen": !error && value === 100,
-              "font-bold": error,
-            })}
-          `)}
-        >
-          {!error && value === 100 && successText}
-          {error && retryText}
-        </span>
+        {error && <Button variant="text" className='text-white' onClick={retryAction}>{retryText}</Button>}
+        {!error && value === 100 && (
+          <span
+            className={twMerge(`
+              text-white tracking-[4px]
+              ${classnames({
+                "text-aquaGreen": !error && value === 100,
+                "font-bold": error,
+              })}
+            `)}
+          >
+            {successText}
+          </span>
+        )}
       </div>
     </div>
   );

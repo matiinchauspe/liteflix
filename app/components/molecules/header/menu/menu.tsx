@@ -14,7 +14,7 @@ import { MenuToggle } from "./menu-toggle";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useCycle(false, true);
-  const { isLargest, isLarge, isMedium, isSmall } = useMediaQuery();
+  const { isLargest, isLarge, isMedium } = useMediaQuery();
 
   const handleToggle = () => {
     setIsOpen();

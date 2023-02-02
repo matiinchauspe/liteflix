@@ -3,7 +3,7 @@ export type Option = {
   label: string;
 };
 
-export interface DropdownProps {
+export type DropdownProps = {
   label?: string;
   selected: string;
   options: Option[];

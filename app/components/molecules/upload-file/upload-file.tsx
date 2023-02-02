@@ -46,14 +46,16 @@ const UploadFile = ({
     <div className="flex flex-col">
       <div
         {...getRootProps({
-          className:
-            "px-20 py-10 border border-dashed border-white cursor-crosshair focus:border-aquaGreen focus:text-aquaGreen focus:outline-none transition-all duration-700",
+          className: `
+            px-10 py-5 md:px-20 md:py-10 border border-dashed border-white cursor-crosshair 
+            focus:border-aquaGreen focus:text-aquaGreen focus:outline-none transition-all duration-700
+          `,
         })}
       >
         <input {...getInputProps()} />
         <div className="flex gap-4 items-center">
           <ClipIcon svgClassName="-mt-[5px]" />
-          <Text>{placeholder}</Text>
+          <Text className="text-xs md:text-base">{placeholder}</Text>
         </div>
       </div>
     </div>

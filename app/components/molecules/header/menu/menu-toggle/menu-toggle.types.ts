@@ -1,4 +1,4 @@
-export interface MenuToggleProps {
+export type MenuToggleProps = {
   opened: boolean;
   toggle: () => void;
 }

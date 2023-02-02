@@ -1,6 +1,6 @@
 import { PATH_NAMES } from "@/app/constants/route-path";
 
-interface Keys {
+type Keys = {
   [key: string]: {
     name: string;
     path: string;

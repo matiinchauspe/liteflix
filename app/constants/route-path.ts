@@ -1,4 +1,4 @@
-interface Keys {
+type Keys = {
   [key: string]: string;
 }
 
