@@ -3,12 +3,19 @@ import { useState } from "react";
 import { postRequest } from "@api/index";
 
 export const useUploadForm = (url: string) => {
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const resetValues = () => {
+    setSuccess(false);
+    setError(false);
+    setProgress(0);
+  }
+
   const uploadForm = async (data: FormData) => {
-    setIsLoading(true);
+    setLoading(true);
 
     const image = data.get("image");
     const title = data.get("title");
@@ -33,13 +40,14 @@ export const useUploadForm = (url: string) => {
           },
         },
       });
-      setIsSuccess(response.status === "OK");
+      setSuccess(response.status === "OK");
     } catch (error) {
-      setIsSuccess(false);
+      setSuccess(false);
+      setError(true);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
-  return { uploadForm, isSuccess, isLoading, progress };
+  return { success, loading, error, progress, uploadForm, resetValues };
 };

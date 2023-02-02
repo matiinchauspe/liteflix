@@ -39,12 +39,12 @@ export const getFeaturedMovies = async () => {
 export const getMyListOfMovies = async () => {
   try {
     const response = await fetch(UrlConstants.BASE_LITEFLIX_API_URL, {
-      // cache: "no-store",
+      cache: "no-store",
     });
     const result = await response.json();
 
     return MyMoviesTransformResponse(result);
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error as string);
   }
 };

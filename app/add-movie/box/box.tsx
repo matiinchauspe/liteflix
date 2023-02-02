@@ -8,16 +8,18 @@ import { useUploadForm } from "@hooks/useUpload";
 import { UPLOAD_MOVIE_URL } from "@constants/url";
 
 import { Feedback } from "./feedback";
-import { UploadFile } from "@components/molecules";
-import { Text, Button, Input, Link, ProgressBar } from "@components/atoms";
+import { UploadFile, ProgressBar } from "@components/molecules";
+import { Text, Button, Input, Link } from "@components/atoms";
 
 const Box = () => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const {
-    isSuccess: uploadSuccess,
-    isLoading,
+    success: uploadSuccess,
+    loading,
+    error,
     uploadForm,
+    resetValues,
     progress,
   } = useUploadForm(UPLOAD_MOVIE_URL);
 
@@ -26,6 +28,8 @@ const Box = () => {
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
+
+  const retryActionUpload = () => resetValues()
 
   const handleSubmit = async () => {
     const data = new FormData();
@@ -36,27 +40,30 @@ const Box = () => {
     await uploadForm(data);
   };
 
-  const disableAction =
-    !(Boolean(file) && title) || (Boolean(file) && title && isLoading);
+  const disableAction = !(Boolean(file) && title) || (Boolean(file) && title && loading) || error;
+  const showFeedback = !loading && uploadSuccess;
+  const showUpload = !loading && !uploadSuccess && !error;
+  const showProgressBar = (loading || error)
 
   return (
     <>
       <SimpleBar style={{ maxHeight: "440px" }}>
         <div className="flex flex-col flex-1 gap-4 md:gap-10 items-center p-5 md:p-10 w-[100%]">
           <Text color="text-aquaGreen">{Transcript.es.global.addMovie}</Text>
-          {isLoading && (
+          {showProgressBar && (
             <ProgressBar
-              value={progress}
+              value={error ? 100 : progress}
               errorText={Transcript.es.addMovie.form.error}
               loadingText={Transcript.es.addMovie.form.loadingText}
               successText={Transcript.es.addMovie.form.successText}
               retryText={Transcript.es.addMovie.form.retryText}
-              error={false}
+              retryAction={retryActionUpload}
+              error={error}
             />
           )}
-          {!isLoading && uploadSuccess && <Feedback />}
+          {showFeedback && <Feedback />}
           {/* Dropzone */}
-          {!isLoading && !uploadSuccess && (
+          {showUpload && (
             <UploadFile
               file={file}
               placeholder={Transcript.es.addMovie.form.dropzone.title}
