@@ -22,3 +22,7 @@ It's a bit cumbersome the folder architecture maybe since following what the 've
 #### API Repo:
 
 - [Liteflix-API](https://github.com/matiinchauspe/liteflix-api)
+
+## Demo
+
+![demo](/demo.gif "demo")
