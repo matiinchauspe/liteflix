@@ -1,5 +1,5 @@
-import { MovieTransformed } from "@internal-types/movie";
+import { MovieTransformed, MyMovieTransformed } from "@internal-types/movie";
 
 export type MovieListProps = {
-  movies: MovieTransformed[];
-}
+  movies: MovieTransformed[] | MyMovieTransformed[];
+};

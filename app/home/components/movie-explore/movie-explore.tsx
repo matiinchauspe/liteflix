@@ -4,15 +4,19 @@ import { useState } from "react";
 // Internal Dependencies
 import { typeOfListOptions as options } from "@utils/index";
 import { Transcript } from "@lang/es";
-import { MovieTransformed, ListMovieTypes } from "@internal-types/index";
+import {
+  MovieTransformed,
+  MyMovieTransformed,
+  ListMovieTypes,
+} from "@internal-types/index";
 
 import { Dropdown } from "@components/molecules/index";
 import { MovieList } from "./movie-list";
 
 type MoveExploreProps = {
   popularMovies: MovieTransformed[];
-  myMovies: MovieTransformed[];
-}
+  myMovies: MyMovieTransformed[];
+};
 
 const MovieExplore = ({ popularMovies, myMovies }: MoveExploreProps) => {
   const [chosen, setChosen] = useState(options[0].value);

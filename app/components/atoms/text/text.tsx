@@ -11,7 +11,6 @@ const Text = ({
   className = "",
   children,
 }: TextProps) => {
-  // TODO: Move styles to a separate file later
   const classes = twMerge(`
     ${inline ? "inline-block" : "block"}
     ${color} 

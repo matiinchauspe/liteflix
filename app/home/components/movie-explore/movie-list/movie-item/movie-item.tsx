@@ -1,7 +1,6 @@
 // External dependencies
 import { motion, useCycle } from "framer-motion";
 // Internal dependencies
-import { Date } from "@utils/index";
 import { useMediaQuery } from "@hooks/index";
 import { fadeIn } from "@animations/index";
 import { useMovieStore } from "@state/store";
@@ -42,7 +41,7 @@ const MovieItem = ({ movie }: MovieItemProps) => {
       animate="visible"
     >
       <motion.img
-        src={movie.image_url}
+        src={movie.image}
         alt={movie.title}
         width="100%"
         className="object-cover aspect-[3/2] rounded-md shadow-sm shadow-grayBlack"
@@ -86,7 +85,7 @@ const MovieItem = ({ movie }: MovieItemProps) => {
             </Text>
           </div>
           <Text variant="body2" color="text-white">
-            {Date.getYear(movie.date)}
+            {movie.date}
           </Text>
         </div>
       </motion.div>

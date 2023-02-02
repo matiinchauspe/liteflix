@@ -12,7 +12,7 @@ import { useCycle } from "framer-motion";
  */
 export const useDelayedAnimateCycle = (
   valueToWait: object | null | string | number,
-  delay: number = 700
+  delay: number = 200
 ) => {
   const [visible, setVisible] = useCycle(true, false);
 

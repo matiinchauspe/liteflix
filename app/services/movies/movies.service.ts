@@ -1,9 +1,10 @@
 // Internal Dependencies
 import { UrlConstants } from "@constants/index";
-import { getRequest, postRequest } from "@api/index";
+import { getRequest } from "@api/index";
 import {
   FeaturedMoviesTransformResponse,
   PopularMoviesTransformResponse,
+  MyMoviesTransformResponse,
 } from "./movies.adapter";
 
 export const getPopularMovies = async () => {
@@ -14,7 +15,7 @@ export const getPopularMovies = async () => {
     const result = PopularMoviesTransformResponse(response);
 
     return result;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error as string);
   }
 };
@@ -27,34 +28,23 @@ export const getFeaturedMovies = async () => {
     const result = FeaturedMoviesTransformResponse(response);
 
     return result;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error as string);
   }
 };
 
-// TODO: We should use a better way to handle the upload and use this
-export const uploadMovie = async (data: FormData) => {
-  const image = data.get("image");
-  const title = data.get("title");
-
+// TO BE CONSIDER:
+// In this case we use the Web fetch() API and not Axios (our set API in api/index) since Next.js extended the native functionality
+// to allow dynamic data from the server - Similar to `getServerSideProps`
+export const getMyListOfMovies = async () => {
   try {
-    const { data: response } = await postRequest({
-      url: UrlConstants.UPLOAD_MOVIE_URL,
-      headers: { "Content-Type": "multipart/form-data" },
-      data: {
-        image,
-        title,
-      },
+    const response = await fetch(UrlConstants.BASE_LITEFLIX_API_URL, {
+      // cache: "no-store",
     });
+    const result = await response.json();
 
-    return {
-      success: response.status === "OK",
-      error: response.status === "ERROR",
-    };
+    return MyMoviesTransformResponse(result);
   } catch (error) {
-    return {
-      success: false,
-      error: true,
-    };
+    throw new Error(error as string);
   }
 };

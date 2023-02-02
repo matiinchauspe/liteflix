@@ -42,7 +42,7 @@ const Box = () => {
   return (
     <>
       <SimpleBar style={{ maxHeight: "440px" }}>
-        <div className="flex flex-col flex-1 gap-10 items-center p-10 w-[100%]">
+        <div className="flex flex-col flex-1 gap-4 md:gap-10 items-center p-5 md:p-10 w-[100%]">
           <Text color="text-aquaGreen">{Transcript.es.global.addMovie}</Text>
           {isLoading && (
             <ProgressBar
@@ -74,7 +74,7 @@ const Box = () => {
             <Button
               onClick={handleSubmit}
               variant="filled"
-              className="bg-white text-grayBlack max-w-[100%]"
+              className="bg-white text-grayBlack max-w-[100%] px-5"
               disabled={disableAction as boolean}
             >
               {Transcript.es.addMovie.form.actions.submit}
@@ -83,7 +83,7 @@ const Box = () => {
           {uploadSuccess && (
             <Link
               href="/"
-              className="tracking-[4px] h-[56px] md:py-4 md:px-16 opacity-90 hover:opacity-100 transition-opacity bg-white text-grayBlack max-w-[100%]"
+              className="tracking-[4px] h-[56px] px-5 md:py-4 md:px-16 opacity-90 hover:opacity-100 transition-opacity bg-white text-grayBlack max-w-[100%]"
             >
               {Transcript.es.global.goHome}
             </Link>
