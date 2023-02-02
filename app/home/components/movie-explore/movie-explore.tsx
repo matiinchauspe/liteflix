@@ -2,7 +2,7 @@
 // External Dependencies
 import { motion } from "framer-motion";
 import { useState } from "react";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 // Internal Dependencies
 import { typeOfListOptions as options } from "@utils/index";
 import { fadeIn } from "@animations/index";
@@ -22,11 +22,11 @@ type MoveExploreProps = {
 };
 
 const MovieExplore = ({ popularMovies, myMovies }: MoveExploreProps) => {
-  // const router = useRouter();
+  const router = useRouter();
   // Refresh the current route and fetch new data from the server without
   // losing client-side browser or React state.
   // Review this https://nextjs.org/docs/routing/dynamic-routes#refreshing-the-page
-  // useState(() => router.refresh()) // This is not the most elegant solution, but it works 😊
+  useState(() => router.refresh()) // This is not the most elegant solution, but it works 😊
   const [chosen, setChosen] = useState(options[0].value);
 
   const handleSelect = (value: string) => setChosen(value);

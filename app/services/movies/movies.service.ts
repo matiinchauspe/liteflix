@@ -40,7 +40,7 @@ export const getFeaturedMovies = async () => {
 export const getMyListOfMovies = async () => {
   try {
     const response = await fetch(UrlConstants.BASE_LITEFLIX_API_URL as string, {
-      // cache: 'no-store',
+      cache: 'no-store',
     });
     const result = await response.json();
 
